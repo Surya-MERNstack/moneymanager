@@ -8,7 +8,7 @@ import apiSlice from '../store/apiSlice';
 Chart.register(ArcElement);
 
 const Charts = () => {
-  const { data, isFetching, isSuccess, isError } = apiSlice.useGetLabelsQuery();
+  const { data, isSuccess } = apiSlice.useGetLabelsQuery();
   const [chartConfig, setChartConfig] = useState(null);
 
   useEffect(() => {

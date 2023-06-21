@@ -1,7 +1,6 @@
 import React from 'react';
 import 'boxicons';
 import { default as api } from '../store/apiSlice';
-import { getSum } from '../helper/helper';
 
 const List = () => {
   const { data, isFetching, isSuccess, isError } = api.useGetLabelsQuery();
