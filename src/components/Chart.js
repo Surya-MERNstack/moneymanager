@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart, ArcElement } from 'chart.js';
 import Labels from './Lables';
@@ -9,18 +9,16 @@ Chart.register(ArcElement);
 
 const Charts = () => {
   const { data, isFetching, isSuccess, isError } = apiSlice.useGetLabelsQuery();
+  const [chartConfig, setChartConfig] = useState(null);
 
-  let graphData;
+  useEffect(() => {
+    if (isSuccess) {
+      const updatedConfig = chart_Data(data);
+      setChartConfig(updatedConfig);
+    }
+  }, [data, isSuccess]);
 
-  if (isFetching) {
-    graphData = <div>Fetching</div>;
-  } else if (isSuccess) {
-    graphData = <Doughnut {...chart_Data(data || {})} />;
-  } else if (isError) {
-    graphData = <div>Error</div>;
-  }
-
-  const config = {
+  const defaultConfig = {
     data: {
       datasets: [
         {
@@ -42,7 +40,7 @@ const Charts = () => {
     <div className='flex justify-content max-w-xs mx-auto'>
       <div className='item'>
         <div className='chart relative'>
-          {graphData && <Doughnut {...config} />}
+          {chartConfig ? <Doughnut {...chartConfig} /> : <Doughnut {...defaultConfig} />}
           <h3 className='mb-4 font-bold title'>
             Total
             <span className='block text-3xl text-emerald-400'>${getTotal(data) ?? 0}</span>

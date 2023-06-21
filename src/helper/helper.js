@@ -31,8 +31,9 @@ export function chart_Data(transaction, custom) {
     return null;
   }
 
-  const labels = ["Investment", "Salary", "Expense"];
-  const dataValues = [0, 0, 0];
+  const labels = ["Investment", "Salary", "Expense", "Saving"];
+  const dataValues = [0, 0, 0, 0];
+  const colors = ["rgb(255, 99, 132)", "rgb(54, 162, 235)", "rgb(255, 205, 86)", "rgb(75, 192, 192)"];
 
   transaction.forEach((item) => {
     if (item.type === "Investment") {
@@ -41,14 +42,10 @@ export function chart_Data(transaction, custom) {
       dataValues[1] += item.amount;
     } else if (item.type === "Expense") {
       dataValues[2] += item.amount;
+    } else if (item.type === "Saving") {
+      dataValues[3] += item.amount;
     }
   });
-
-  const colors = [
-    "rgb(255, 99, 132)",
-    "rgb(54, 162, 235)",
-    "rgb(255, 205, 86)",
-  ];
 
   const config = {
     data: {
@@ -75,3 +72,4 @@ export function chart_Data(transaction, custom) {
 export function getTotal(transaction) {
   return _.sum(getSum(transaction));
 }
+
