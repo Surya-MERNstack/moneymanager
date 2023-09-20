@@ -1,21 +1,24 @@
 import './App.css';
-// import Graph from './components/Graph';
-import Form  from './components/Form';
-import Charts from './components/Chart' 
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Login from './components/Login';
+import Register from './components/Register';
+import Expense from './components/Expense';
+import { ToastContainer } from 'react-toastify';
+import Welcome from './components/Welcome';
+
 function App() {
   return (
-    <div className="App">
-      <div className ="container mx-auto max-w-6xl text-center drop-shadow-lg text-g">
-      <h1 className = "text-4xl py-8 mb-10 bg-slate-800 text-white rounded"> Money Manager</h1>
-      
-      {/* grid columns*/}
-      <div className = "grid md:grid-cols-2 gap-4">
-       {/* chart */}
-       <Charts/>
-       {/* Form */}
-       <Form/>
-       </div>
-      </div>
+
+    <div>
+      <BrowserRouter>
+            <Routes>
+              <Route path='/' element= {<Welcome/>}></Route>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/expense" element={<Expense />} />
+            </Routes>
+          </BrowserRouter>
+          <ToastContainer/>
     </div>
   );
 }

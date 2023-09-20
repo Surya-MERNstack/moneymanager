@@ -1,10 +1,12 @@
 import React from 'react';
 import 'boxicons';
 import { default as api } from '../store/apiSlice';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const List = () => {
   const { data, isFetching, isSuccess, isError } = api.useGetLabelsQuery();
-  console.log(data);
+  
 
   const [deleteTransaction] = api.useDeleteTransactionMutation();
 
@@ -12,7 +14,9 @@ const List = () => {
     try {
       await deleteTransaction(recordId);
     } catch (err) {
-      console.log(err);
+      toast.error(err,{
+        position : toast.POSITION.TOP_CENTER
+      })
     }
   };
 
