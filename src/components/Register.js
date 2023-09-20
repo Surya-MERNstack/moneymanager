@@ -31,6 +31,7 @@ const Register = () => {
     ) {
       toast.error("Fill in all required fields", {
         position: toast.POSITION.TOP_CENTER,
+        theme : "dark"
       });
       return;
     }
@@ -46,12 +47,13 @@ const Register = () => {
       );
 
       if (response.status === 401) {
-        toast.error(response.message, {
+        toast.error(response.data.message, {
           position: toast.POSITION.TOP_CENTER,
         });
       } else {
-        toast.success(response.message, {
+        toast.success(response.data.message, {
           position: toast.POSITION.TOP_CENTER,
+          theme : "dark"
         });
       }
 

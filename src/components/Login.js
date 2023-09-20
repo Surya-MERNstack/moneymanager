@@ -26,6 +26,7 @@ const Login = () => {
     if (formData.email === "" || formData.password === "") {
       toast.error("Fill in all required fields", {
         position: toast.POSITION.TOP_CENTER,
+        theme : "dark"
       });
       return;
     }
