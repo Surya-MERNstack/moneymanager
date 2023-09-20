@@ -1,5 +1,6 @@
 import React from 'react';
 import bg from '../image/bg.gif';
+import { Link } from 'react-router-dom';
 
 const Welcome = () => {
   return (
@@ -14,12 +15,12 @@ const Welcome = () => {
         <p className="text-lg md:text-xl lg:text-2xl mb-8 text-indigo-500">
           Take control of your finances and achieve your financial goals.
         </p>
-        <a
-          href="/register"
+        <Link
+          to="/register"
           className="bg-blue-500 hover:bg-white hover:border border-blue-500 hover:text-blue-500 text-white font-semibold py-2 px-6 rounded-full text-lg md:text-xl lg:text-2xl transition duration-300 ease-in-out transform hover:scale-105"
         >
           Get Started
-        </a>
+        </Link>
       </div>
     </div>
   );
