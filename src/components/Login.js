@@ -64,11 +64,13 @@ const Login = () => {
        if(err.response && err.response.status == 401) {
         toast.error("Email not found, Register first!!!", {
           position: toast.POSITION.TOP_CENTER,
+          theme : "dark"
         });
        }
       else if (err.response && err.response.status === 402) {
         toast.error("Password is wrong", {
           position: toast.POSITION.TOP_CENTER,
+          theme : "dark"
         });
       } else {
         toast.error("Login failed, Try again!!", {
